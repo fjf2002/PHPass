@@ -57,14 +57,14 @@ public class PHPass {
             ++i;
             output += itoa64.charAt(value & 63);
             if (i < count) {
-                value |= (src[i] + (src[i] < 0 ? 256 : 0)) << 8;
+                value |= (src[i] & 0xff) << 8;
             }
             output += itoa64.charAt((value >> 6) & 63);
             if (i++ >= count) {
                 break;
             }
             if (i < count) {
-                value |= (src[i] + (src[i] < 0 ? 256 : 0)) << 16;
+                value |= (src[i] & 0xff) << 16;
             }
             output += itoa64.charAt((value >> 12) & 63);
             if (i++ >= count) {
